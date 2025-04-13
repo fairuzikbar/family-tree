@@ -1,10 +1,10 @@
 <template>
   <div>
-    <nav>
+    <!-- <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/wrbt">Wrbt Fams</router-link> |
       <router-link to="/pygn">Pygn Fams</router-link>
-    </nav>
+    </nav> -->
     <router-view />
   </div>
 </template>

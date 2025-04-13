@@ -18,7 +18,7 @@
       name: 'app',
       components: {
           WrbtFams,
-          PygnFams
+          // PygnFams
       }
   }
 </script>

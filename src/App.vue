@@ -1,16 +1,21 @@
 <template>
-  <div id="app">
-      <FamilyTree />
+  <div>
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/wrbt">Wrbt Fams</router-link>
+    </nav>
+    <router-view />
   </div>
 </template>
 
+
 <script>
-  import FamilyTree from './components/FamilyTree.vue'
+  import WrbtFams from './components/WrbtFams.vue'
 
   export default {
       name: 'app',
       components: {
-          FamilyTree,
+          WrbtFams,
       }
   }
 </script>

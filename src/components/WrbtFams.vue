@@ -1,5 +1,5 @@
 <template>
-    <div id="tree" ref="wrbt"></div>
+    <div id="tree" ref="tree"></div>
 </template>
 
 <script>

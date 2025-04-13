@@ -5,10 +5,10 @@ import Wrbt from '@/components/WrbtFams.vue'
 import Pygn from '@/components/PygnFams.vue'
 
 const routes = [
-//   { path: '/', name: 'Home', component: Home },
-  { path: '/wrbt', name: 'Warungboto', component: Wrbt },
-  { path: '/pygn', name: 'Piyungan', component: Pygn }
-]
+    { path: '/', redirect: '/wrbt' },
+    { path: '/wrbt', name: 'Warungboto', component: Wrbt },
+    { path: '/pygn', name: 'Piyungan', component: Pygn }
+]  
 
 const router = createRouter({
   history: createWebHistory(),

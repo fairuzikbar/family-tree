@@ -5,7 +5,7 @@
       <router-link to="/wrbt">Wrbt Fams</router-link> |
       <router-link to="/pygn">Pygn Fams</router-link>
     </nav> -->
-    <RouterView />
+    <router-view></router-view>
   </div>
 </template>
 

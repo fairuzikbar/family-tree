@@ -1,12 +1,12 @@
 <template>
-    <div id="tree" ref="tree"></div>
+    <div id="tree" ref="wrbt"></div>
 </template>
 
 <script>
 import FamilyTree from '@balkangraph/familytree.js'
 
 export default {
-    name: 'tree',
+    name: 'wrbt',
     data() {
         return {
             nodes: []

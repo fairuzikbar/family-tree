@@ -6,7 +6,7 @@
 import FamilyTree from '@balkangraph/familytree.js'
 
 export default {
-    name: 'WrbtFams',
+    name: 'tree',
     data() {
         return {
             nodes: []

@@ -1,6 +1,6 @@
 // src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
-import Wrbt from '@/components/WrbtFams.vue'
+import Wrbt from './WrbtFams.vue'
 // import Pygn from '@/components/PygnFams.vue' // Assuming you still have this
 
 const routes = [

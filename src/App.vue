@@ -1,9 +1,10 @@
 <template>
   <div>
-    <nav>
+    <!-- <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/wrbt">Wrbt Fams</router-link>
-    </nav>
+      <router-link to="/pygn">Pygn Fams</router-link>
+    </nav> -->
     <router-view />
   </div>
 </template>
@@ -11,11 +12,13 @@
 
 <script>
   import WrbtFams from './components/WrbtFams.vue'
+  import PygnFams from './components/PygnFams.vue'
 
   export default {
       name: 'app',
       components: {
           WrbtFams,
+          PygnFams
       }
   }
 </script>

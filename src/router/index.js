@@ -4,7 +4,7 @@ import Wrbt from '@/components/WrbtFams.vue'
 // import Pygn from '@/components/PygnFams.vue' // Assuming you still have this
 
 const routes = [
-  { path: '/', name: 'Home', component: Wrbt },
+  // { path: '/', name: 'Home', component: Wrbt },
   { path: '/wrbt', name: 'Warungboto', component: Wrbt },
   // { path: '/pygn', name: 'Piyungan', component: Pygn } // Assuming you still have this
 ]

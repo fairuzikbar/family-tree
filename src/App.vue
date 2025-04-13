@@ -1,8 +1,10 @@
 <template>
   <div>
-    <router-link to="/">Home</router-link> |
+    <!-- <nav>
+      <router-link to="/">Home</router-link> |
       <router-link to="/wrbt">Wrbt Fams</router-link>
       <router-link to="/pygn">Pygn Fams</router-link>
+    </nav> -->
     <router-view />
   </div>
 </template>

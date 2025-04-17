@@ -18,7 +18,11 @@ export default async function handler(req, res) {
         idloop: item.id,
         id: props.id?.number ?? null,
         // pids: [props.pids?.number] ?? null,
-        pids: props.pids?.rich_text[0]?.text?.content ?? '',
+        pids:
+          props.pids?.rich_text[0]?.text?.content
+            ?.split(',')
+            .map((s) => parseInt(s.trim()))
+            .filter((n) => !isNaN(n)) ?? [],
         // pids: str_pids.split(',').map((num) => parseInt(num.trim(), 10)),
         mid: props.mid?.number ?? null,
         fid: props.fid?.number ?? null,

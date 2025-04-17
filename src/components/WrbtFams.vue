@@ -17,7 +17,6 @@ export default {
             try {
                 const res = await fetch('/api/db') // path ini tergantung setup kamu
                 const data = await res.json()
-                console.log(data)
                 const filtered = data.filter(item => item.fams === 'wrbt');
                 this.nodes = filtered
                 this.mytree(this.$refs.tree, this.nodes)

@@ -23,7 +23,7 @@ export default async function handler(req, res) {
             ?.split(',')
             .map((s) => parseInt(s.trim()))
             .filter((n) => !isNaN(n)) ?? [],
-        // pids: str_pids.split(',').map((num) => parseInt(num.trim(), 10)),
+        divorced: [props.divorced?.number] ?? [],
         mid: props.mid?.number ?? null,
         fid: props.fid?.number ?? null,
         name: props.name?.rich_text[0]?.text?.content ?? '',

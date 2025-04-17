@@ -49,8 +49,8 @@ export default {
                     png: { text: "Export PNG" },
                     svg: { text: "Export SVG" }
                 },
-                // scaleInitial: FamilyTree.match.boundary,
-                orientation: FamilyTree.orientation.top,
+                scaleInitial: FamilyTree.match.boundary,
+                // orientation: FamilyTree.orientation.top,
             })
 
             this.family.on('render-link', (sender, args) => {

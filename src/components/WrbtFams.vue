@@ -52,6 +52,17 @@ export default {
                 // scaleInitial: FamilyTree.match.boundary,
                 orientation: FamilyTree.orientation.top,
             })
+
+            this.family.on('render-link', (sender, args) => {
+                const cnodeData = this.family.get(args.cnode.id);
+                const nodeData = this.family.get(args.node.id);
+                if (
+                    cnodeData?.divorced?.includes(args.node.id) &&
+                    nodeData?.divorced?.includes(args.cnode.id)
+                ) {
+                    args.html = args.html.replace("path", "path stroke-dasharray='3, 2'");
+                }
+            });
         }
     },
     mounted() {

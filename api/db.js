@@ -1,41 +1,43 @@
-import { Client } from '@notionhq/client';
+import { Client } from '@notionhq/client'
 
-const notion = new Client({ auth: process.env.NOTION_API_KEY });
-const databaseId = process.env.NOTION_DB_ID;
+const notion = new Client({ auth: process.env.NOTION_API_KEY })
+const databaseId = process.env.NOTION_DB_ID
 
 export default async function handler(req, res) {
   try {
     const response = await notion.databases.query({
-      database_id: databaseId
-    });
+      database_id: databaseId,
+    })
 
     // Log the raw response to inspect its structure
-    console.log('Raw Notion API Response:', JSON.stringify(response, null, 2));
+    console.log('Raw Notion API Response:', JSON.stringify(response, null, 2))
 
     const items = response.results.map((item) => {
-      const props = item.properties;
+      const props = item.properties
       return {
         idloop: item.id,
         id: props.id?.number ?? null,
-        pids: [props.pids?.number] ?? null,
+        // pids: [props.pids?.number] ?? null,
+        str_pids: props.pids?.rich_text[0]?.text?.content ?? '',
+        pids: str_pids.split(',').map((num) => parseInt(num.trim(), 10)),
         mid: props.mid?.number ?? null,
         fid: props.fid?.number ?? null,
-        name: props.name?.rich_text[0]?.text?.content ?? "",
-        nickname: props.nickname?.rich_text[0]?.text?.content ?? "",
-        gender: props.gender?.select?.name ?? "",
-        img: props.img?.url ?? "",
-        fams: props.fams?.title[0]?.text?.content ?? "",
-        fams_spec: props.fams_spec?.rich_text[0]?.text?.content ?? "",
-        place: props.place?.rich_text[0]?.text?.content ?? "",
+        name: props.name?.rich_text[0]?.text?.content ?? '',
+        nickname: props.nickname?.rich_text[0]?.text?.content ?? '',
+        gender: props.gender?.select?.name ?? '',
+        img: props.img?.url ?? '',
+        fams: props.fams?.title[0]?.text?.content ?? '',
+        fams_spec: props.fams_spec?.rich_text[0]?.text?.content ?? '',
+        place: props.place?.rich_text[0]?.text?.content ?? '',
         birth_year: props.birth_year?.number ?? null,
         death_year: props.death_year?.number ?? null,
         // age: props.Age?.number ?? null,
         // role: props.Role?.select?.name ?? ""
-      };
-    });
-    items.sort((a, b) => a.id - b.id);
-    res.status(200).json(items);
+      }
+    })
+    items.sort((a, b) => a.id - b.id)
+    res.status(200).json(items)
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error.message })
   }
 }

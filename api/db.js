@@ -33,9 +33,10 @@ export default async function handler(req, res) {
         fams: props.fams?.title[0]?.text?.content ?? '',
         fams_spec: props.fams_spec?.rich_text[0]?.text?.content ?? '',
         place: props.place?.rich_text[0]?.text?.content ?? '',
-        birth_year: props.birth_year?.rich_text[0]?.text?.content ?? 'null',
-        death_year: props.death_year?.rich_text[0]?.text?.content ?? 'present',
-        year: `${props.birth_year?.rich_text[0]?.text?.content ?? 'null'} - ${props.death_year?.rich_text[0]?.text?.content ?? 'present'}`,
+        year:
+          (props.death_year?.rich_text[0]?.text?.content ?? '')
+            ? `${props.birth_year?.rich_text[0]?.text?.content ?? 'unknown'} - ${props.death_year?.rich_text[0]?.text?.content ?? 'unknown'}`
+            : `${props.birth_year?.rich_text[0]?.text?.content ?? 'unknown'}`,
         // age: props.Age?.number ?? null,
         // role: props.Role?.select?.name ?? ""
       }

@@ -4,7 +4,7 @@
 
 <script>
 import FamilyTree from '@balkangraph/familytree.js'
-// import fams from '/api/db.json'
+import fams from '/api/db.json'
 
 export default {
     name: 'wrbt',
@@ -17,8 +17,8 @@ export default {
         async fetchNodes() {
             try {
                 const res = await fetch('/api/db') // path ini tergantung setup kamu
-                const data = await res.json()
-                // const data = fams
+                // const data = await res.json()
+                const data = fams
                 const filtered = data.filter(item => item.fams === 'wrbt');
                 this.nodes = filtered
                 this.mytree(this.$refs.tree, this.nodes)
@@ -32,8 +32,8 @@ export default {
                 nodeBinding: {
                     field_0: "nickname",
                     field_1: "name",
-                    field_2: "birth_year",
-                    field_3: "death_year", 
+                    field_2: "place",
+                    field_3: "year", 
                     img_0: "img"
                 },
                 editForm: {

@@ -4,6 +4,7 @@
 
 <script>
 import FamilyTree from '@balkangraph/familytree.js'
+import fams from '/api/db.json'
 
 export default {
     name: 'wrbt',
@@ -17,6 +18,7 @@ export default {
             try {
                 const res = await fetch('/api/db') // path ini tergantung setup kamu
                 const data = await res.json()
+                // const data = fams
                 const filtered = data.filter(item => item.fams === 'wrbt');
                 this.nodes = filtered
                 this.mytree(this.$refs.tree, this.nodes)
@@ -28,8 +30,10 @@ export default {
             this.family = new FamilyTree(domEl, {
                 nodes: x,
                 nodeBinding: {
-                    field_0: "name",
-                    field_1: "nickname",
+                    field_0: "nickname",
+                    field_1: "name",
+                    field_2: "birth_year",
+                    field_3: "death_year", 
                     img_0: "img"
                 },
                 editForm: {
@@ -63,6 +67,23 @@ export default {
                     args.html = args.html.replace("path", "path stroke-dasharray='3, 2'");
                 }
             });
+
+            FamilyTree.templates.tommy_male.field_0 =
+                '<text class="field_0" style="font-size: 14px;" fill="#ffffff" x="125" y="30" text-anchor="middle">{val}</text>';
+            FamilyTree.templates.tommy_male.field_1 =
+                '<text class="field_1" style="font-size: 18px; font-weight: bold" fill="#ffffff" x="125" y="50" text-anchor="middle">{val}</text>';
+            FamilyTree.templates.tommy_male.field_2 =
+                '<text class="field_2" style="font-size: 14px;" fill="#ffffff" x="125" y="70" text-anchor="middle">{val}</text>';
+            FamilyTree.templates.tommy_male.field_3 =
+                '<text class="field_3" style="font-size: 14px;" fill="#ffffff" x="125" y="90" text-anchor="middle">{val}</text>';
+            FamilyTree.templates.tommy_female.field_0 =
+                '<text class="field_0" style="font-size: 14px;" fill="#ffffff" x="125" y="30" text-anchor="middle">{val}</text>';
+            FamilyTree.templates.tommy_female.field_1 =
+                '<text class="field_1" style="font-size: 18px; font-weight: bold" fill="#ffffff" x="125" y="50" text-anchor="middle">{val}</text>';
+            FamilyTree.templates.tommy_female.field_2 =
+                '<text class="field_2" style="font-size: 14px;" fill="#ffffff" x="125" y="70" text-anchor="middle">{val}</text>';
+            FamilyTree.templates.tommy_female.field_3 =
+                '<text class="field_3" style="font-size: 14px;" fill="#ffffff" x="125" y="90" text-anchor="middle">{val}</text>';
         }
     },
     mounted() {

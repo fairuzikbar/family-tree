@@ -35,7 +35,7 @@ export default async function handler(req, res) {
         place: props.place?.rich_text[0]?.text?.content ?? '',
         birth_year: props.birth_year?.rich_text[0]?.text?.content ?? 'null',
         death_year: props.death_year?.rich_text[0]?.text?.content ?? 'present',
-        year: `${birth_year} - ${death_year}`,
+        year: `${props.birth_year?.rich_text[0]?.text?.content ?? 'null'} - ${props.death_year?.rich_text[0]?.text?.content ?? 'present'}`,
         // age: props.Age?.number ?? null,
         // role: props.Role?.select?.name ?? ""
       }

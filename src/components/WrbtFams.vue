@@ -4,7 +4,7 @@
 
 <script>
 import FamilyTree from '@balkangraph/familytree.js'
-import fams from '/api/db.json'
+// import fams from '/api/db.json'
 
 export default {
     name: 'wrbt',

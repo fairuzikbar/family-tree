@@ -3,7 +3,7 @@
   </template>
   
   <script>
-  import FamilyTreeView from '@/components/FamilyTreeView.vue'
+  import FamilyTreeView from '@/view/FamilyTreeView.vue'
   
   export default {
     components: { FamilyTreeView }

@@ -1,5 +1,5 @@
 <template>
-  <FamilyTreeView fams="pygn" />
+  <FamilyTreeView fams="brbs" />
 </template>
 
 <script>

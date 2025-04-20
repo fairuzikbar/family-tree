@@ -4,7 +4,6 @@
   
   <script>
   import FamilyTree from '@balkangraph/familytree.js'
-  import fams from '/api/db.json'
 
   export default {
     name: 'FamilyTreeView',
@@ -23,8 +22,7 @@
       async fetchNodes() {
         try {
           const res = await fetch('/api/db')
-          // const data = await res.json()
-          const data = fams
+          const data = await res.json()
           const filtered = data.filter(item => item.fams === this.fams)
           this.nodes = filtered
           this.mytree(this.$refs.tree, this.nodes)

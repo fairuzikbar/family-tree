@@ -5,19 +5,27 @@ const databaseId = process.env.NOTION_DB_ID
 
 export default async function handler(req, res) {
   try {
-    const response = await notion.databases.query({
-      database_id: databaseId,
-    })
+    let allResults = []
+    let hasMore = true
+    let startCursor = undefined
 
-    // Log the raw response to inspect its structure
-    console.log('Raw Notion API Response:', JSON.stringify(response, null, 2))
+    while (hasMore) {
+      const response = await notion.databases.query({
+        database_id: databaseId,
+        start_cursor: startCursor,
+        page_size: 100, // maksimal per halaman
+      })
 
-    const items = response.results.map((item) => {
+      allResults = allResults.concat(response.results)
+      hasMore = response.has_more
+      startCursor = response.next_cursor
+    }
+
+    const items = allResults.map((item) => {
       const props = item.properties
       return {
         idloop: item.id,
         id: props.id?.number ?? null,
-        // pids: [props.pids?.number] ?? null,
         pids:
           props.pids?.rich_text[0]?.text?.content
             ?.split(',')
@@ -37,10 +45,9 @@ export default async function handler(req, res) {
           (props.death_year?.rich_text[0]?.text?.content ?? '')
             ? `${props.birth_year?.rich_text[0]?.text?.content ?? 'unknown'} - ${props.death_year?.rich_text[0]?.text?.content ?? 'unknown'}`
             : `${props.birth_year?.rich_text[0]?.text?.content ?? 'unknown'}`,
-        // age: props.Age?.number ?? null,
-        // role: props.Role?.select?.name ?? ""
       }
     })
+
     items.sort((a, b) => a.id - b.id)
     res.status(200).json(items)
   } catch (error) {
